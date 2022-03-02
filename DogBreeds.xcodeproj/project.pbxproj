@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		CEDE5B9027CFDF7B0036B6C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */; };
-		CEDE5B9227CFDF7B0036B6C2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5B9127CFDF7B0036B6C2 /* SceneDelegate.swift */; };
-		CEDE5B9427CFDF7B0036B6C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5B9327CFDF7B0036B6C2 /* ViewController.swift */; };
-		CEDE5B9727CFDF7B0036B6C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9527CFDF7B0036B6C2 /* Main.storyboard */; };
 		CEDE5B9927CFDF7E0036B6C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */; };
 		CEDE5B9C27CFDF7E0036B6C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9A27CFDF7E0036B6C2 /* LaunchScreen.storyboard */; };
+		CEDE5BA427CFDFA90036B6C2 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BA327CFDFA90036B6C2 /* AppViewController.swift */; };
+		CEDE5BA827CFDFE40036B6C2 /* FavoriteImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BA727CFDFE40036B6C2 /* FavoriteImagesViewController.swift */; };
+		CEDE5BAB27CFDFFD0036B6C2 /* DogBreedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BAA27CFDFFD0036B6C2 /* DogBreedsListViewController.swift */; };
+		CEDE5BAE27CFE0210036B6C2 /* ScrollStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BAD27CFE0200036B6C2 /* ScrollStackViewController.swift */; };
+		CEDE5BB027CFE0320036B6C2 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BAF27CFE0320036B6C2 /* ScrollView.swift */; };
+		CEDE5BB327CFE04A0036B6C2 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BB227CFE04A0036B6C2 /* LayoutGuide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CEDE5B8C27CFDF7B0036B6C2 /* DogBreeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEDE5B9127CFDF7B0036B6C2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEDE5B9327CFDF7B0036B6C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CEDE5B9627CFDF7B0036B6C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEDE5B9B27CFDF7E0036B6C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEDE5B9D27CFDF7E0036B6C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEDE5BA327CFDFA90036B6C2 /* AppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
+		CEDE5BA727CFDFE40036B6C2 /* FavoriteImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImagesViewController.swift; sourceTree = "<group>"; };
+		CEDE5BAA27CFDFFD0036B6C2 /* DogBreedsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogBreedsListViewController.swift; sourceTree = "<group>"; };
+		CEDE5BAD27CFE0200036B6C2 /* ScrollStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollStackViewController.swift; sourceTree = "<group>"; };
+		CEDE5BAF27CFE0320036B6C2 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		CEDE5BB227CFE04A0036B6C2 /* LayoutGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +62,58 @@
 		CEDE5B8E27CFDF7B0036B6C2 /* DogBreeds */ = {
 			isa = PBXGroup;
 			children = (
+				CEDE5BA527CFDFC30036B6C2 /* Presentation */,
 				CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */,
-				CEDE5B9127CFDF7B0036B6C2 /* SceneDelegate.swift */,
-				CEDE5B9327CFDF7B0036B6C2 /* ViewController.swift */,
-				CEDE5B9527CFDF7B0036B6C2 /* Main.storyboard */,
 				CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */,
 				CEDE5B9A27CFDF7E0036B6C2 /* LaunchScreen.storyboard */,
 				CEDE5B9D27CFDF7E0036B6C2 /* Info.plist */,
+				CEDE5BA327CFDFA90036B6C2 /* AppViewController.swift */,
 			);
 			path = DogBreeds;
+			sourceTree = "<group>";
+		};
+		CEDE5BA527CFDFC30036B6C2 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BAC27CFE0120036B6C2 /* Common */,
+				CEDE5BA927CFDFED0036B6C2 /* DogBreedsList */,
+				CEDE5BA627CFDFD30036B6C2 /* FavoriteImages */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		CEDE5BA627CFDFD30036B6C2 /* FavoriteImages */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BA727CFDFE40036B6C2 /* FavoriteImagesViewController.swift */,
+			);
+			path = FavoriteImages;
+			sourceTree = "<group>";
+		};
+		CEDE5BA927CFDFED0036B6C2 /* DogBreedsList */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BAA27CFDFFD0036B6C2 /* DogBreedsListViewController.swift */,
+			);
+			path = DogBreedsList;
+			sourceTree = "<group>";
+		};
+		CEDE5BAC27CFE0120036B6C2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BB127CFE03C0036B6C2 /* Utility */,
+				CEDE5BAD27CFE0200036B6C2 /* ScrollStackViewController.swift */,
+				CEDE5BAF27CFE0320036B6C2 /* ScrollView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CEDE5BB127CFE03C0036B6C2 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BB227CFE04A0036B6C2 /* LayoutGuide.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +176,6 @@
 			files = (
 				CEDE5B9C27CFDF7E0036B6C2 /* LaunchScreen.storyboard in Resources */,
 				CEDE5B9927CFDF7E0036B6C2 /* Assets.xcassets in Resources */,
-				CEDE5B9727CFDF7B0036B6C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +186,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEDE5B9427CFDF7B0036B6C2 /* ViewController.swift in Sources */,
+				CEDE5BA827CFDFE40036B6C2 /* FavoriteImagesViewController.swift in Sources */,
+				CEDE5BA427CFDFA90036B6C2 /* AppViewController.swift in Sources */,
+				CEDE5BB327CFE04A0036B6C2 /* LayoutGuide.swift in Sources */,
+				CEDE5BAB27CFDFFD0036B6C2 /* DogBreedsListViewController.swift in Sources */,
 				CEDE5B9027CFDF7B0036B6C2 /* AppDelegate.swift in Sources */,
-				CEDE5B9227CFDF7B0036B6C2 /* SceneDelegate.swift in Sources */,
+				CEDE5BAE27CFE0210036B6C2 /* ScrollStackViewController.swift in Sources */,
+				CEDE5BB027CFE0320036B6C2 /* ScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CEDE5B9527CFDF7B0036B6C2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEDE5B9627CFDF7B0036B6C2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CEDE5B9A27CFDF7E0036B6C2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,9 +338,9 @@
 				INFOPLIST_FILE = DogBreeds/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,7 +350,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -322,9 +366,9 @@
 				INFOPLIST_FILE = DogBreeds/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +378,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
