@@ -37,4 +37,11 @@ class ScrollStackViewController: UIViewController {
         scrollView.preservesSuperviewLayoutMargins = true
         stackView.preservesSuperviewLayoutMargins = true
     }
+    
+    // MARK: - Managing subviews
+
+    /// Adding view to stack
+    func addView(_ view: UIView) {
+        stackView.addArrangedSubview(view)
+    }
 }

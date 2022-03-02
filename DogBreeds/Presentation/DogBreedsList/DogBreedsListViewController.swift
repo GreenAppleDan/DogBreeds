@@ -7,12 +7,14 @@
 
 import UIKit
 
-final class DogBreedsListViewController: ScrollStackViewController {
+final class DogBreedsListViewController: ScrollStackViewController, Loadable {
     
     private let breedsService: BreedsService
     
     static func make(breedsService: BreedsService) -> UIViewController {
-        UINavigationController(rootViewController: Self(breedsService: breedsService))
+        let navigationController = UINavigationController(rootViewController: Self(breedsService: breedsService))
+        navigationController.navigationBar.prefersLargeTitles = true
+        return navigationController
     }
     
     private init(breedsService: BreedsService) {
@@ -34,5 +36,49 @@ final class DogBreedsListViewController: ScrollStackViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getBreedsList()
+    }
+    
+    private func getBreedsList() {
+        startLoading()
+        breedsService.breedsList { [weak self] result in
+            switch result {
+            case .success(let breedsList):
+                self?.stopLoading()
+                self?.setupWith(breeds: breedsList.breeds)
+            default:
+                break
+            }
+        }
+    }
+    
+    private func setupWith(breeds: [String]) {
+        let breedNameViews = breeds.map { breedName in
+            BreedNameView(breedName: breedName) { [weak self] in
+                self?.getBreedImages(breedName: breedName)
+            }
+        }
+        
+        breedNameViews.forEach{ addView($0) }
+    }
+    
+    private func getBreedImages(breedName: String) {
+        startLoading()
+        
+        breedsService.breedImages(breed: breedName) { [weak self] result in
+            self?.stopLoading()
+            
+            switch result {
+            case .success(let breedImages):
+                self?.pushImagesVc(breed: breedName, breedImages: breedImages)
+            default:
+                break
+            }
+        }
+    }
+    
+    private func pushImagesVc(breed: String, breedImages: BreedImagesEndpointResponse) {
+        let vc = BreedImagesViewController(breed: breed, breedImages: breedImages)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
