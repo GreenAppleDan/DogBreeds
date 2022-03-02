@@ -1,0 +1,27 @@
+# Build generated
+build/
+
+# User settings
+xcuserdata/
+
+# Other
+*.xccheckout
+*.xcscmblueprint
+.DS_Store
+
+# Obj-C/Swift specific
+*.hmap
+*.ipa
+
+# CocoaPods
+Pods/
+!Podfile.lock
+
+# Ruby gems folders
+.bundle/
+vendor/
+
+
+Packages
+.build
+DerivedData/
