@@ -19,11 +19,14 @@ final class BreedImagesViewController: UIViewController {
     private let cellIdentifier = BreedImageCollectionViewCell.identifier
     
     init(breed: String, breedImages: BreedImagesEndpointResponse) {
-        self.cellViewModels = breedImages.imageUrlRequests.map {
+        
+        self.cellViewModels = breedImages.imageUrls.map {
             // TODO: определяй isInitiallySelected по urlrequest.url.absoluteString, который берем из UserDefaults
-            BreedImageCollectionViewCell.ViewModel(imageUrlRequest: $0, isInitiallySelected: false)
+            BreedImageCollectionViewCell.ViewModel(imageUrl: $0, isInitiallySelected: false)
         }
+        
         super.init(nibName: nil, bundle: nil)
+        title = breed
     }
     
     required init?(coder: NSCoder) {
@@ -43,6 +46,12 @@ final class BreedImagesViewController: UIViewController {
             recalculateCellSize()
             collectionView.collectionViewLayout.invalidateLayout()
         }
+    }
+    
+    override var navigationItem: UINavigationItem {
+        let item = super.navigationItem
+        item.largeTitleDisplayMode = .never
+        return item
     }
 
     

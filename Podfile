@@ -7,4 +7,5 @@ target 'DogBreeds' do
 
   # Pods for DogBreeds
   pod 'Alamofire', '~> 4.8'
+  pod 'ImageLoader'
 end

@@ -12,11 +12,8 @@ struct BreedImagesEndpointResponse: Decodable {
 }
 
 extension BreedImagesEndpointResponse {
-    var imageUrlRequests: [URLRequest?] {
-        message.prefix(10).map{
-            guard let url = URL(string: $0) else { return nil }
-            return URLRequest(url: url)
-        }
+    var imageUrls: [URL?] {
+        message.prefix(10).map{ URL(string: $0) }
     }
 }
 

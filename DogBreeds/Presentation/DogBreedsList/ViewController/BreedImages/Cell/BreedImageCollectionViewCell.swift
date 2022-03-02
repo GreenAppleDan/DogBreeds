@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import ImageLoader
 
 final class BreedImageCollectionViewCell: UICollectionViewCell {
     
     struct ViewModel {
-        let imageUrlRequest: URLRequest?
+        let imageUrl: URL?
         let isInitiallySelected: Bool
     }
     
@@ -18,6 +19,7 @@ final class BreedImageCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private var mainImageView: UIImageView!
     @IBOutlet private var heartImageView: UIImageView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,6 +29,12 @@ final class BreedImageCollectionViewCell: UICollectionViewCell {
     
     func configure(viewModel: ViewModel) {
         // TODO: загружай картинку
+        activityIndicator.startAnimating()
+        if let imageUrl = viewModel.imageUrl {
+            mainImageView.load.request(with: imageUrl) { [weak self] _,_,_  in
+                self?.activityIndicator.stopAnimating()
+            }
+        }
         heartImageView.isHidden = !viewModel.isInitiallySelected
     }
 }
