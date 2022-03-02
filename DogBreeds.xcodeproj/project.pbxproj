@@ -19,6 +19,14 @@
 		CEDE5BB327CFE04A0036B6C2 /* LayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BB227CFE04A0036B6C2 /* LayoutGuide.swift */; };
 		CEDE5BB727CFE47D0036B6C2 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BB627CFE47D0036B6C2 /* ApiClient.swift */; };
 		CEDE5BB927CFE5710036B6C2 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BB827CFE5710036B6C2 /* Endpoint.swift */; };
+		CEDE5BBC27CFE8AF0036B6C2 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BBB27CFE8AF0036B6C2 /* Encoder.swift */; };
+		CEDE5BBE27CFE8D80036B6C2 /* URLRequest+HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BBD27CFE8D80036B6C2 /* URLRequest+HTTP.swift */; };
+		CEDE5BC127CFE9380036B6C2 /* BaseEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BC027CFE9380036B6C2 /* BaseEndpoint.swift */; };
+		CEDE5BC327CFE9940036B6C2 /* BreedsListEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BC227CFE9940036B6C2 /* BreedsListEndpoint.swift */; };
+		CEDE5BC527CFEA4C0036B6C2 /* ApiRequestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BC427CFEA4C0036B6C2 /* ApiRequestAdapter.swift */; };
+		CEDE5BC827CFEF330036B6C2 /* BreedsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BC727CFEF330036B6C2 /* BreedsService.swift */; };
+		CEDE5BCB27CFEFE50036B6C2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BCA27CFEFE50036B6C2 /* Result.swift */; };
+		CEDE5BCD27CFF0AB0036B6C2 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BCC27CFF0AB0036B6C2 /* ApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +45,14 @@
 		CEDE5BB227CFE04A0036B6C2 /* LayoutGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutGuide.swift; sourceTree = "<group>"; };
 		CEDE5BB627CFE47D0036B6C2 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		CEDE5BB827CFE5710036B6C2 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		CEDE5BBB27CFE8AF0036B6C2 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		CEDE5BBD27CFE8D80036B6C2 /* URLRequest+HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+HTTP.swift"; sourceTree = "<group>"; };
+		CEDE5BC027CFE9380036B6C2 /* BaseEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEndpoint.swift; sourceTree = "<group>"; };
+		CEDE5BC227CFE9940036B6C2 /* BreedsListEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsListEndpoint.swift; sourceTree = "<group>"; };
+		CEDE5BC427CFEA4C0036B6C2 /* ApiRequestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestAdapter.swift; sourceTree = "<group>"; };
+		CEDE5BC727CFEF330036B6C2 /* BreedsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsService.swift; sourceTree = "<group>"; };
+		CEDE5BCA27CFEFE50036B6C2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		CEDE5BCC27CFF0AB0036B6C2 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		EBB56409AF91871A16406780 /* Pods-DogBreeds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogBreeds.release.xcconfig"; path = "Target Support Files/Pods-DogBreeds/Pods-DogBreeds.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,8 +164,11 @@
 		CEDE5BB427CFE4570036B6C2 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				CEDE5BC627CFEF260036B6C2 /* Service */,
+				CEDE5BBA27CFE8930036B6C2 /* Utility */,
 				CEDE5BB527CFE45F0036B6C2 /* Endpoints */,
 				CEDE5BB627CFE47D0036B6C2 /* ApiClient.swift */,
+				CEDE5BC427CFEA4C0036B6C2 /* ApiRequestAdapter.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -157,9 +176,46 @@
 		CEDE5BB527CFE45F0036B6C2 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
-				CEDE5BB827CFE5710036B6C2 /* Endpoint.swift */,
+				CEDE5BBF27CFE8F30036B6C2 /* Base */,
+				CEDE5BC227CFE9940036B6C2 /* BreedsListEndpoint.swift */,
 			);
 			path = Endpoints;
+			sourceTree = "<group>";
+		};
+		CEDE5BBA27CFE8930036B6C2 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BBB27CFE8AF0036B6C2 /* Encoder.swift */,
+				CEDE5BBD27CFE8D80036B6C2 /* URLRequest+HTTP.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		CEDE5BBF27CFE8F30036B6C2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BB827CFE5710036B6C2 /* Endpoint.swift */,
+				CEDE5BC027CFE9380036B6C2 /* BaseEndpoint.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		CEDE5BC627CFEF260036B6C2 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BC927CFEFC50036B6C2 /* Helper */,
+				CEDE5BC727CFEF330036B6C2 /* BreedsService.swift */,
+				CEDE5BCC27CFF0AB0036B6C2 /* ApiService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		CEDE5BC927CFEFC50036B6C2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				CEDE5BCA27CFEFE50036B6C2 /* Result.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,13 +333,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEDE5BA827CFDFE40036B6C2 /* FavoriteImagesViewController.swift in Sources */,
+				CEDE5BC127CFE9380036B6C2 /* BaseEndpoint.swift in Sources */,
+				CEDE5BCD27CFF0AB0036B6C2 /* ApiService.swift in Sources */,
 				CEDE5BB927CFE5710036B6C2 /* Endpoint.swift in Sources */,
+				CEDE5BBC27CFE8AF0036B6C2 /* Encoder.swift in Sources */,
 				CEDE5BA427CFDFA90036B6C2 /* AppViewController.swift in Sources */,
+				CEDE5BC827CFEF330036B6C2 /* BreedsService.swift in Sources */,
+				CEDE5BCB27CFEFE50036B6C2 /* Result.swift in Sources */,
 				CEDE5BB327CFE04A0036B6C2 /* LayoutGuide.swift in Sources */,
+				CEDE5BBE27CFE8D80036B6C2 /* URLRequest+HTTP.swift in Sources */,
 				CEDE5BB727CFE47D0036B6C2 /* ApiClient.swift in Sources */,
 				CEDE5BAB27CFDFFD0036B6C2 /* DogBreedsListViewController.swift in Sources */,
 				CEDE5B9027CFDF7B0036B6C2 /* AppDelegate.swift in Sources */,
+				CEDE5BC327CFE9940036B6C2 /* BreedsListEndpoint.swift in Sources */,
 				CEDE5BAE27CFE0210036B6C2 /* ScrollStackViewController.swift in Sources */,
+				CEDE5BC527CFEA4C0036B6C2 /* ApiRequestAdapter.swift in Sources */,
 				CEDE5BB027CFE0320036B6C2 /* ScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

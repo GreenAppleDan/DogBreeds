@@ -28,8 +28,10 @@ final class AppViewController: UITabBarController {
     }
     
     private func configure() {
+        let apiClient = Client()
+        let breedsService = BaseBreedsService(apiClient: apiClient)
         
-        let dogBreedsList = DogBreedsListViewController.make()
+        let dogBreedsList = DogBreedsListViewController.make(breedsService: breedsService)
         let favoriteImages = FavoriteImagesViewController()
         let tabBarViewControllers = [dogBreedsList, favoriteImages]
         

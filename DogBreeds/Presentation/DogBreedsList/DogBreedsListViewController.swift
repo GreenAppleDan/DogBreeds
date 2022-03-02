@@ -9,11 +9,14 @@ import UIKit
 
 final class DogBreedsListViewController: ScrollStackViewController {
     
-    static func make() -> UIViewController {
-        UINavigationController(rootViewController: Self())
+    private let breedsService: BreedsService
+    
+    static func make(breedsService: BreedsService) -> UIViewController {
+        UINavigationController(rootViewController: Self(breedsService: breedsService))
     }
     
-    private init() {
+    private init(breedsService: BreedsService) {
+        self.breedsService = breedsService
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = .init(systemName: "list.dash")
         title = "Breeds List"

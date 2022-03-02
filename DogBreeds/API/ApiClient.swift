@@ -10,10 +10,18 @@ import Alamofire
 
 typealias APIResult<Value> = Swift.Result<Value, Error>
 
-final class ApiClient {
+/// API Client Protocol
+protocol APIClient: AnyObject {
+
+    func request<T>(
+        _ endpoint: T,
+        completionHandler: @escaping (APIResult<T.Content>) -> Void) where T: Endpoint
+}
+
+final class Client: APIClient {
     
     /// Network session manager
-    private let sessionManager: Alamofire.SessionManager
+    private let sessionManager: SessionManager
     
     /// Network responses queue
     private let responseQueue = DispatchQueue(
@@ -23,18 +31,22 @@ final class ApiClient {
     /// Callback queue
     private let completionQueue = DispatchQueue.main
     
-    init() {
+    /// Request adapter
+    let requestAdapter: RequestAdapter
+    
+    init(requestAdapter: RequestAdapter = ApiRequestAdapter()) {
         let config = URLSessionConfiguration.ephemeral
         config.timeoutIntervalForRequest = 30.0
         sessionManager = .init(configuration: config)
+        sessionManager.adapter = requestAdapter
+        self.requestAdapter = requestAdapter
     }
     
-    /// Отправить запрос к API.
+    /// Send a request to API
     ///
     /// - Parameters:
-    ///   - endpoint: Конечная точка запроса.
-    ///   - completionHandler: Обработчик результата запроса.
-    /// - Returns: Прогресс выполнения запроса.
+    ///   - endpoint: Final point of request
+    ///   - completionHandler: Request result processor
     func request<T>(
         _ endpoint: T,
         completionHandler: @escaping (APIResult<T.Content>) -> Void) where T: Endpoint {
