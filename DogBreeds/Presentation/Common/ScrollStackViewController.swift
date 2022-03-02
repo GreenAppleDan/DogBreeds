@@ -44,4 +44,13 @@ class ScrollStackViewController: UIViewController {
     func addView(_ view: UIView) {
         stackView.addArrangedSubview(view)
     }
+    
+    // MARK: - Managing child UIViewController
+
+    func addArrangedChild(_ child: UIViewController) {
+        addChild(child)
+        addView(child.view)
+
+        child.didMove(toParent: self)
+    }
 }

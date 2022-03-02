@@ -37,6 +37,7 @@
 		CEDE5BE427D0190F0036B6C2 /* BreedImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5BE327D0190F0036B6C2 /* BreedImageCollectionViewCell.xib */; };
 		CEDE5BE627D01A230036B6C2 /* BreedImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BE527D01A230036B6C2 /* BreedImageCollectionViewCell.swift */; };
 		CEDE5BE827D01DCB0036B6C2 /* BreedImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5BE727D01DCB0036B6C2 /* BreedImagesViewController.xib */; };
+		CEDE5BEA27D029030036B6C2 /* BreedImagesContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BE927D029030036B6C2 /* BreedImagesContainerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		CEDE5BE327D0190F0036B6C2 /* BreedImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		CEDE5BE527D01A230036B6C2 /* BreedImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CEDE5BE727D01DCB0036B6C2 /* BreedImagesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedImagesViewController.xib; sourceTree = "<group>"; };
+		CEDE5BE927D029030036B6C2 /* BreedImagesContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedImagesContainerViewController.swift; sourceTree = "<group>"; };
 		EBB56409AF91871A16406780 /* Pods-DogBreeds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogBreeds.release.xcconfig"; path = "Target Support Files/Pods-DogBreeds/Pods-DogBreeds.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,6 +268,7 @@
 				CEDE5BE227D018B80036B6C2 /* Cell */,
 				CEDE5BD527D0088B0036B6C2 /* BreedImagesViewController.swift */,
 				CEDE5BE727D01DCB0036B6C2 /* BreedImagesViewController.xib */,
+				CEDE5BE927D029030036B6C2 /* BreedImagesContainerViewController.swift */,
 			);
 			path = BreedImages;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 			files = (
 				CEDE5BA827CFDFE40036B6C2 /* FavoriteImagesViewController.swift in Sources */,
 				CEDE5BD627D0088B0036B6C2 /* BreedImagesViewController.swift in Sources */,
+				CEDE5BEA27D029030036B6C2 /* BreedImagesContainerViewController.swift in Sources */,
 				CEDE5BC127CFE9380036B6C2 /* BaseEndpoint.swift in Sources */,
 				CEDE5BCD27CFF0AB0036B6C2 /* ApiService.swift in Sources */,
 				CEDE5BB927CFE5710036B6C2 /* Endpoint.swift in Sources */,

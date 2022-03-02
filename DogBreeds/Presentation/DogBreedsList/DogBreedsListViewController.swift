@@ -78,7 +78,7 @@ final class DogBreedsListViewController: ScrollStackViewController, Loadable {
     }
     
     private func pushImagesVc(breed: String, breedImages: BreedImagesEndpointResponse) {
-        let vc = BreedImagesViewController(breed: breed, breedImages: breedImages)
+        let vc = BreedImagesContainerViewController(breed: breed, breedImages: breedImages)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
