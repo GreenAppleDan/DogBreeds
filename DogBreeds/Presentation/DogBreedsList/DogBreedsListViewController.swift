@@ -37,6 +37,7 @@ final class DogBreedsListViewController: ScrollStackViewController, Loadable {
     override func viewDidLoad() {
         super.viewDidLoad()
         getBreedsList()
+        view.backgroundColor = .black
     }
     
     private func getBreedsList() {

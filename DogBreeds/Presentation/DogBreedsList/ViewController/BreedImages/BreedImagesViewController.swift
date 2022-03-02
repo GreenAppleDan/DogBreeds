@@ -26,7 +26,6 @@ final class BreedImagesViewController: UIViewController {
         }
         
         super.init(nibName: nil, bundle: nil)
-        title = breed
     }
     
     required init?(coder: NSCoder) {
@@ -47,13 +46,6 @@ final class BreedImagesViewController: UIViewController {
             collectionView.collectionViewLayout.invalidateLayout()
         }
     }
-    
-    override var navigationItem: UINavigationItem {
-        let item = super.navigationItem
-        item.largeTitleDisplayMode = .never
-        return item
-    }
-
     
     private func setupCollectionView() {
         collectionView.delegate = self

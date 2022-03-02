@@ -16,6 +16,7 @@ final class BreedImagesContainerViewController: ScrollStackViewController {
         self.breed = breed
         self.breedImages = breedImages
         super.init(nibName: nil, bundle: nil)
+        title = breed
     }
     
     required init?(coder: NSCoder) {
@@ -24,7 +25,14 @@ final class BreedImagesContainerViewController: ScrollStackViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
         setup()
+    }
+    
+    override var navigationItem: UINavigationItem {
+        let item = super.navigationItem
+        item.largeTitleDisplayMode = .never
+        return item
     }
     
     private func setup() {
