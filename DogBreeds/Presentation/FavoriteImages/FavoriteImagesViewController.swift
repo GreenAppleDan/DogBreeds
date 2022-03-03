@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class FavoriteImagesViewController: UIViewController {
+final class FavoriteImagesViewController: ScrollStackViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -22,5 +22,18 @@ final class FavoriteImagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        setup()
+    }
+    
+    override var navigationItem: UINavigationItem {
+        let item = super.navigationItem
+        item.largeTitleDisplayMode = .never
+        return item
+    }
+    
+    private func setup() {
+        
+        let favoriteVc = FavoriteImagesListViewController()
+        addArrangedChild(favoriteVc)
     }
 }

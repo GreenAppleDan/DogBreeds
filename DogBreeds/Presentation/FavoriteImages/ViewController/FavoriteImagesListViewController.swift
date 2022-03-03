@@ -1,41 +1,30 @@
 //
-//  BreedImagesViewController.swift
+//  FavoriteImagesListViewController.swift
 //  DogBreeds
 //
-//  Created by Denis Zhukoborskiy on 02.03.2022.
+//  Created by Denis Zhukoborskiy on 03.03.2022.
 //
 
 import UIKit
 
-final class BreedImagesViewController: UIViewController {
-    
+final class FavoriteImagesListViewController: UIViewController {
     @IBOutlet private var collectionView: UICollectionView!
     @IBOutlet private var collectionViewHeightConstraint: NSLayoutConstraint!
-    
+
     private var collectionViewSize: CGSize = .zero
     private var cellSize: CGSize = .zero
-    private let cellViewModels: [BreedImageCollectionViewCell.BasicViewModel]
-    
+    private let cellViewModels: [BreedImageCollectionViewCell.FavoritesViewModel]
+
     private let cellIdentifier = BreedImageCollectionViewCell.identifier
-    
-    private let breed: String
     private var favoriteBreedsStorage: FavoriteBreedsStorage
-    private var favoriteBreeds: FavoriteBreeds {
-        didSet {
-            favoriteBreedsStorage.favoriteBreeds = favoriteBreeds
-        }
-    }
+    private var favoriteBreeds: FavoriteBreeds
     
-    init(breed: String,
-         breedImages: BreedImagesEndpointResponse,
-         favoriteBreedsStorage: FavoriteBreedsStorage = BasicFavoriteBreedsStorage()) {
+    init(favoriteBreedsStorage: FavoriteBreedsStorage = BasicFavoriteBreedsStorage()) {
         
-        self.breed = breed
         let favoriteBreeds = favoriteBreedsStorage.favoriteBreeds
-        self.cellViewModels = breedImages.imageUrls.compactMap {
-            guard let imageUrl = $0 else { return nil }
-            let isInitiallySelected = favoriteBreeds.value.contains(FavoriteBreed(breedName: breed, imageUrl: imageUrl))
-            return BreedImageCollectionViewCell.BasicViewModel(imageUrl: imageUrl, isInitiallySelected: isInitiallySelected)
+        
+        self.cellViewModels = favoriteBreeds.value.map {
+            BreedImageCollectionViewCell.FavoritesViewModel(imageUrl: $0.imageUrl, breed: $0.breedName)
         }
         
         self.favoriteBreedsStorage = favoriteBreedsStorage
@@ -110,8 +99,9 @@ final class BreedImagesViewController: UIViewController {
         }
     }
 }
+ 
 
-extension BreedImagesViewController: UICollectionViewDataSource {
+extension FavoriteImagesListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellViewModels.count
     }
@@ -119,31 +109,18 @@ extension BreedImagesViewController: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        
-        let cellViewModel = cellViewModels[indexPath.row]
-        
-            (cell as? BreedImageCollectionViewCell)?.configure(mode: .basic(cellViewModel))
-        
-        return cell
-    }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+            
+            let cellViewModel = cellViewModels[indexPath.row]
+            
+            (cell as? BreedImageCollectionViewCell)?.configure(mode: .favourites(cellViewModel))
+            
+            return cell
+        }
     
 }
 
-extension BreedImagesViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellViewModel = cellViewModels[indexPath.row]
-        guard let cell = collectionView.cellForItem(at: indexPath) as? BreedImageCollectionViewCell else { return }
-        guard let isFavorite = cell.toggleIsFavoriteIfPossible() else { return }
-        
-        let favoriteBreed = FavoriteBreed(breedName: breed, imageUrl: cellViewModel.imageUrl)
-        if isFavorite {
-            favoriteBreeds.value.insert(favoriteBreed)
-        } else {
-            favoriteBreeds.value.remove(favoriteBreed)
-        }
-    }
+extension FavoriteImagesListViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(
         _ collectionView: UICollectionView,

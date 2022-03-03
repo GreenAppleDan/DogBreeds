@@ -10,6 +10,8 @@
 		6AC53838D4B9E66E09E7BA09 /* Pods_DogBreeds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D665F4B4EBE1DB97678F633 /* Pods_DogBreeds.framework */; };
 		CE8077B127D0BCBE00AFA78B /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B027D0BCBE00AFA78B /* DataStorage.swift */; };
 		CE8077B427D0BD8400AFA78B /* FavoriteBreedsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */; };
+		CE8077B927D0CAA400AFA78B /* FavoriteImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */; };
+		CE8077BB27D0CB0100AFA78B /* FavoriteImagesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */; };
 		CEDE5B9027CFDF7B0036B6C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */; };
 		CEDE5B9927CFDF7E0036B6C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */; };
 		CEDE5B9C27CFDF7E0036B6C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9A27CFDF7E0036B6C2 /* LaunchScreen.storyboard */; };
@@ -47,6 +49,8 @@
 		6D665F4B4EBE1DB97678F633 /* Pods_DogBreeds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogBreeds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8077B027D0BCBE00AFA78B /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBreedsStorage.swift; sourceTree = "<group>"; };
+		CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImagesListViewController.swift; sourceTree = "<group>"; };
+		CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteImagesListViewController.xib; sourceTree = "<group>"; };
 		CEDE5B8C27CFDF7B0036B6C2 /* DogBreeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,6 +140,15 @@
 			path = FavoriteBreeds;
 			sourceTree = "<group>";
 		};
+		CE8077B527D0CA1C00AFA78B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */,
+				CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		CEDE5B8327CFDF7B0036B6C2 = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +195,7 @@
 		CEDE5BA627CFDFD30036B6C2 /* FavoriteImages */ = {
 			isa = PBXGroup;
 			children = (
+				CE8077B527D0CA1C00AFA78B /* ViewController */,
 				CEDE5BA727CFDFE40036B6C2 /* FavoriteImagesViewController.swift */,
 			);
 			path = FavoriteImages;
@@ -385,6 +399,7 @@
 				CEDE5BE827D01DCB0036B6C2 /* BreedImagesViewController.xib in Resources */,
 				CEDE5B9C27CFDF7E0036B6C2 /* LaunchScreen.storyboard in Resources */,
 				CEDE5BE427D0190F0036B6C2 /* BreedImageCollectionViewCell.xib in Resources */,
+				CE8077BB27D0CB0100AFA78B /* FavoriteImagesListViewController.xib in Resources */,
 				CEDE5B9927CFDF7E0036B6C2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +463,7 @@
 				CEDE5BA427CFDFA90036B6C2 /* AppViewController.swift in Sources */,
 				CEDE5BD027CFF55A0036B6C2 /* BreedNameView.swift in Sources */,
 				CE8077B127D0BCBE00AFA78B /* DataStorage.swift in Sources */,
+				CE8077B927D0CAA400AFA78B /* FavoriteImagesListViewController.swift in Sources */,
 				CEDE5BC827CFEF330036B6C2 /* BreedsService.swift in Sources */,
 				CEDE5BCB27CFEFE50036B6C2 /* Result.swift in Sources */,
 				CEDE5BB327CFE04A0036B6C2 /* LayoutGuide.swift in Sources */,
