@@ -13,7 +13,7 @@ final class FavoriteImagesListViewController: UIViewController {
 
     private var collectionViewSize: CGSize = .zero
     private var cellSize: CGSize = .zero
-    private let cellViewModels: [BreedImageCollectionViewCell.FavoritesViewModel]
+    private var cellViewModels: [BreedImageCollectionViewCell.FavoritesViewModel]
 
     private let cellIdentifier = BreedImageCollectionViewCell.identifier
     private var favoriteBreedsStorage: FavoriteBreedsStorage
@@ -42,6 +42,11 @@ final class FavoriteImagesListViewController: UIViewController {
         setupCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateCollectionView()
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -50,6 +55,13 @@ final class FavoriteImagesListViewController: UIViewController {
             recalculateCellSize()
             collectionView.collectionViewLayout.invalidateLayout()
         }
+    }
+    
+    private func updateCollectionView() {
+        cellViewModels = favoriteBreedsStorage.favoriteBreeds.value.map {
+            BreedImageCollectionViewCell.FavoritesViewModel(imageUrl: $0.imageUrl, breed: $0.breedName)
+        }
+        collectionView.reloadData()
     }
     
     private func setupCollectionView() {
