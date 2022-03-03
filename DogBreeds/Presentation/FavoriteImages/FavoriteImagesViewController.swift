@@ -12,6 +12,13 @@ final class FavoriteImagesViewController: ScrollStackViewController {
     private var breedFilterAppliable: BreedFilterAppliable?
     
     private var sortedBreeds = [String]()
+    
+    static func make() -> UIViewController {
+        let navigationController = UINavigationController(rootViewController: Self())
+        navigationController.navigationBar.prefersLargeTitles = true
+        return navigationController
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = .init(systemName: "star.fill")
@@ -31,7 +38,7 @@ final class FavoriteImagesViewController: ScrollStackViewController {
     
     override var navigationItem: UINavigationItem {
         let item = super.navigationItem
-        item.largeTitleDisplayMode = .never
+        item.largeTitleDisplayMode = .always
         return item
     }
     

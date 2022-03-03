@@ -31,7 +31,7 @@ final class AppViewController: UITabBarController {
         let breedsService = BaseBreedsService(apiClient: apiClient)
         
         let dogBreedsList = DogBreedsListViewController.make(breedsService: breedsService)
-        let favoriteImages = FavoriteImagesViewController()
+        let favoriteImages = FavoriteImagesViewController.make()
         let tabBarViewControllers = [dogBreedsList, favoriteImages]
         
         setViewControllers(tabBarViewControllers, animated: true)
