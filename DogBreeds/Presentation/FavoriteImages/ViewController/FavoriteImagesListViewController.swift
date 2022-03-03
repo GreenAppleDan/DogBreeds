@@ -94,6 +94,7 @@ final class FavoriteImagesListViewController: UIViewController, BreedFilterAppli
         cellViewModels = favoriteBreedsStorage.favoriteBreeds.value.map {
             BreedImageCollectionViewCell.FavoritesViewModel(imageUrl: $0.imageUrl, breed: $0.breedName)
         }
+        recalculateCellSize()
         collectionView.reloadData()
     }
     
