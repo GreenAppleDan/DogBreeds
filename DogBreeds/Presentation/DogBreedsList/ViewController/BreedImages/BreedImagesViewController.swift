@@ -18,12 +18,29 @@ final class BreedImagesViewController: UIViewController {
     
     private let cellIdentifier = BreedImageCollectionViewCell.identifier
     
-    init(breed: String, breedImages: BreedImagesEndpointResponse) {
-        
-        self.cellViewModels = breedImages.imageUrls.map {
-            // TODO: определяй isInitiallySelected по urlrequest.url.absoluteString, который берем из UserDefaults
-            BreedImageCollectionViewCell.ViewModel(imageUrl: $0, isInitiallySelected: false)
+    private let breed: String
+    private var favoriteBreedsStorage: FavoriteBreedsStorage
+    private var favoriteBreeds: FavoriteBreeds {
+        didSet {
+            favoriteBreedsStorage.favoriteBreeds = favoriteBreeds
         }
+    }
+    
+    init(breed: String,
+         breedImages: BreedImagesEndpointResponse,
+         favoriteBreedsStorage: FavoriteBreedsStorage = BasicFavoriteBreedsStorage()) {
+        
+        self.breed = breed
+        let favoriteBreeds = favoriteBreedsStorage.favoriteBreeds
+        self.cellViewModels = breedImages.imageUrls.compactMap {
+            // TODO: определяй isInitiallySelected по urlrequest.url.absoluteString, который берем из UserDefaults
+            guard let imageUrl = $0 else { return nil }
+            let isInitiallySelected = favoriteBreeds.value.contains(FavoriteBreed(breedName: breed, imageUrl: imageUrl))
+            return BreedImageCollectionViewCell.ViewModel(imageUrl: imageUrl, isInitiallySelected: isInitiallySelected)
+        }
+        
+        self.favoriteBreedsStorage = favoriteBreedsStorage
+        self.favoriteBreeds = favoriteBreeds
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -117,8 +134,16 @@ extension BreedImagesViewController: UICollectionViewDataSource {
 extension BreedImagesViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        // TODO: меняй видимость сердечка, добавляй/удаляй стрингу из userDefaults
+        let cellViewModel = cellViewModels[indexPath.row]
+        guard let cell = collectionView.cellForItem(at: indexPath) as? BreedImageCollectionViewCell else { return }
+        let isFavorite = cell.toggleIsFavorite()
+        
+        let favoriteBreed = FavoriteBreed(breedName: breed, imageUrl: cellViewModel.imageUrl)
+        if isFavorite {
+            favoriteBreeds.value.insert(favoriteBreed)
+        } else {
+            favoriteBreeds.value.remove(favoriteBreed)
+        }
     }
     
     func collectionView(

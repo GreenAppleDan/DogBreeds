@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6AC53838D4B9E66E09E7BA09 /* Pods_DogBreeds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D665F4B4EBE1DB97678F633 /* Pods_DogBreeds.framework */; };
+		CE8077B127D0BCBE00AFA78B /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B027D0BCBE00AFA78B /* DataStorage.swift */; };
+		CE8077B427D0BD8400AFA78B /* FavoriteBreedsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */; };
 		CEDE5B9027CFDF7B0036B6C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */; };
 		CEDE5B9927CFDF7E0036B6C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */; };
 		CEDE5B9C27CFDF7E0036B6C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9A27CFDF7E0036B6C2 /* LaunchScreen.storyboard */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		2DB99C238E922953AAE7DA26 /* Pods-DogBreeds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogBreeds.debug.xcconfig"; path = "Target Support Files/Pods-DogBreeds/Pods-DogBreeds.debug.xcconfig"; sourceTree = "<group>"; };
 		6D665F4B4EBE1DB97678F633 /* Pods_DogBreeds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogBreeds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE8077B027D0BCBE00AFA78B /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBreedsStorage.swift; sourceTree = "<group>"; };
 		CEDE5B8C27CFDF7B0036B6C2 /* DogBreeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +111,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE8077AE27D0BC7300AFA78B /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				CE8077AF27D0BC8D00AFA78B /* Storage */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		CE8077AF27D0BC8D00AFA78B /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				CE8077B227D0BD6600AFA78B /* FavoriteBreeds */,
+				CE8077B027D0BCBE00AFA78B /* DataStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		CE8077B227D0BD6600AFA78B /* FavoriteBreeds */ = {
+			isa = PBXGroup;
+			children = (
+				CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */,
+			);
+			path = FavoriteBreeds;
+			sourceTree = "<group>";
+		};
 		CEDE5B8327CFDF7B0036B6C2 = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +157,7 @@
 		CEDE5B8E27CFDF7B0036B6C2 /* DogBreeds */ = {
 			isa = PBXGroup;
 			children = (
+				CE8077AE27D0BC7300AFA78B /* Business Logic */,
 				CEDE5BB427CFE4570036B6C2 /* API */,
 				CEDE5BA527CFDFC30036B6C2 /* Presentation */,
 				CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */,
@@ -417,6 +447,7 @@
 				CEDE5BBC27CFE8AF0036B6C2 /* Encoder.swift in Sources */,
 				CEDE5BA427CFDFA90036B6C2 /* AppViewController.swift in Sources */,
 				CEDE5BD027CFF55A0036B6C2 /* BreedNameView.swift in Sources */,
+				CE8077B127D0BCBE00AFA78B /* DataStorage.swift in Sources */,
 				CEDE5BC827CFEF330036B6C2 /* BreedsService.swift in Sources */,
 				CEDE5BCB27CFEFE50036B6C2 /* Result.swift in Sources */,
 				CEDE5BB327CFE04A0036B6C2 /* LayoutGuide.swift in Sources */,
@@ -427,6 +458,7 @@
 				CEDE5B9027CFDF7B0036B6C2 /* AppDelegate.swift in Sources */,
 				CEDE5BE127D010D00036B6C2 /* BreedImagesEndpoint.swift in Sources */,
 				CEDE5BC327CFE9940036B6C2 /* BreedsListEndpoint.swift in Sources */,
+				CE8077B427D0BD8400AFA78B /* FavoriteBreedsStorage.swift in Sources */,
 				CEDE5BAE27CFE0210036B6C2 /* ScrollStackViewController.swift in Sources */,
 				CEDE5BC527CFEA4C0036B6C2 /* ApiRequestAdapter.swift in Sources */,
 				CEDE5BDF27D00E400036B6C2 /* Loadable.swift in Sources */,

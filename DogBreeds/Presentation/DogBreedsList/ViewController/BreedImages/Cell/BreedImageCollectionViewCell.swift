@@ -11,7 +11,7 @@ import ImageLoader
 final class BreedImageCollectionViewCell: UICollectionViewCell {
     
     struct ViewModel {
-        let imageUrl: URL?
+        let imageUrl: URL
         let isInitiallySelected: Bool
     }
     
@@ -21,20 +21,37 @@ final class BreedImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var heartImageView: UIImageView!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     
+    private var isFavorite = false {
+        didSet {
+            determineHeartVisibility()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         clipsToBounds = true
         layer.cornerRadius = 8
+        determineHeartVisibility()
+        heartImageView.isHidden = true
+    }
+    
+    private func determineHeartVisibility() {
+        heartImageView.alpha = isFavorite ? 1 : 0.3
     }
     
     func configure(viewModel: ViewModel) {
-        // TODO: загружай картинку
         activityIndicator.startAnimating()
-        if let imageUrl = viewModel.imageUrl {
-            mainImageView.load.request(with: imageUrl) { [weak self] _,_,_  in
-                self?.activityIndicator.stopAnimating()
-            }
+        
+        mainImageView.load.request(with: viewModel.imageUrl) { [weak self] _,_,_  in
+            self?.activityIndicator.stopAnimating()
+            self?.heartImageView.isHidden = false
         }
-        heartImageView.isHidden = !viewModel.isInitiallySelected
+        
+        isFavorite = viewModel.isInitiallySelected
+    }
+    
+    func toggleIsFavorite() -> Bool {
+        isFavorite.toggle()
+        return isFavorite
     }
 }
