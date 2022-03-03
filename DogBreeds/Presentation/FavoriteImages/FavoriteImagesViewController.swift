@@ -9,6 +9,9 @@ import UIKit
 
 final class FavoriteImagesViewController: ScrollStackViewController {
     
+    private var breedFilterAppliable: BreedFilterAppliable?
+    
+    private var sortedBreeds = [String]()
     init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.image = .init(systemName: "star.fill")
@@ -22,6 +25,7 @@ final class FavoriteImagesViewController: ScrollStackViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        stackView.spacing = 10
         setup()
     }
     
@@ -33,7 +37,35 @@ final class FavoriteImagesViewController: ScrollStackViewController {
     
     private func setup() {
         
-        let favoriteVc = FavoriteImagesListViewController()
+        let filterView = FilterView.make(
+            onFilterTap: { [weak self] in
+                self?.showFilters()
+            },
+            onResetTap: { [weak self] in
+                self?.breedFilterAppliable?.breedFilter = nil
+            })
+        addView(filterView)
+        
+        let favoriteVc = FavoriteImagesListViewController(delegate: self)
+        breedFilterAppliable = favoriteVc
         addArrangedChild(favoriteVc)
+    }
+    
+    private func showFilters() {
+        let vc = FavoriteImagesFilterViewController(breeds: sortedBreeds, delegate: self)
+        present(vc, animated: true)
+    }
+}
+
+extension FavoriteImagesViewController: FavoriteImagesListViewControllerDelegate {
+    func favoriteImagesBreedNamesUpdated(uniqueBreedNames: Set<String>) {
+        sortedBreeds = Array(uniqueBreedNames).sorted()
+    }
+}
+
+extension FavoriteImagesViewController: FavoriteImagesFilterViewControllerDelegate {
+    func favoriteImagesFilterViewControllerDidChooseBreed(_ breed: String) {
+        breedFilterAppliable?.breedFilter = breed
+        dismiss(animated: true)
     }
 }

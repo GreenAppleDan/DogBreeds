@@ -7,19 +7,51 @@
 
 import UIKit
 
-final class FavoriteImagesListViewController: UIViewController {
+protocol FavoriteImagesListViewControllerDelegate: AnyObject {
+    func favoriteImagesBreedNamesUpdated(uniqueBreedNames: Set<String>)
+}
+
+protocol BreedFilterAppliable {
+    var breedFilter: String? { get set }
+}
+
+final class FavoriteImagesListViewController: UIViewController, BreedFilterAppliable {
     @IBOutlet private var collectionView: UICollectionView!
     @IBOutlet private var collectionViewHeightConstraint: NSLayoutConstraint!
 
     private var collectionViewSize: CGSize = .zero
     private var cellSize: CGSize = .zero
-    private var cellViewModels: [BreedImageCollectionViewCell.FavoritesViewModel]
+    private var cellViewModels: [BreedImageCollectionViewCell.FavoritesViewModel] {
+        didSet {
+            let uniqueBreedNames = Set(cellViewModels.map{ $0.breed })
+            delegate?.favoriteImagesBreedNamesUpdated(uniqueBreedNames: uniqueBreedNames)
+        }
+    }
+    
+    private var filteredCellViewModels: [BreedImageCollectionViewCell.FavoritesViewModel] {
+        if let breedFilter = breedFilter {
+            return cellViewModels.filter{ $0.breed == breedFilter }
+        } else {
+            return cellViewModels
+        }
+    }
+    
+    var breedFilter: String? = nil {
+        didSet {
+            if oldValue != breedFilter {
+                updateCollectionView()
+            }
+        }
+    }
 
     private let cellIdentifier = BreedImageCollectionViewCell.identifier
     private var favoriteBreedsStorage: FavoriteBreedsStorage
     private var favoriteBreeds: FavoriteBreeds
     
-    init(favoriteBreedsStorage: FavoriteBreedsStorage = BasicFavoriteBreedsStorage()) {
+    private weak var delegate: FavoriteImagesListViewControllerDelegate?
+    
+    init(favoriteBreedsStorage: FavoriteBreedsStorage = BasicFavoriteBreedsStorage(),
+         delegate: FavoriteImagesListViewControllerDelegate?) {
         
         let favoriteBreeds = favoriteBreedsStorage.favoriteBreeds
         
@@ -29,6 +61,7 @@ final class FavoriteImagesListViewController: UIViewController {
         
         self.favoriteBreedsStorage = favoriteBreedsStorage
         self.favoriteBreeds = favoriteBreeds
+        self.delegate = delegate
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -82,7 +115,7 @@ final class FavoriteImagesListViewController: UIViewController {
         let estimatedWidth: CGFloat = 138
         let estimatedHeight: CGFloat = 124
         let spacing = flowLayout.minimumInteritemSpacing
-        let allCasesCount = CGFloat(cellViewModels.count)
+        let allCasesCount = CGFloat(filteredCellViewModels.count)
         var numberOfCells = floor(collectionViewSize.width / estimatedWidth)
         numberOfCells = min(numberOfCells, allCasesCount)
         
@@ -115,7 +148,7 @@ final class FavoriteImagesListViewController: UIViewController {
 
 extension FavoriteImagesListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellViewModels.count
+        return filteredCellViewModels.count
     }
     
     func collectionView(
@@ -123,7 +156,7 @@ extension FavoriteImagesListViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
             
-            let cellViewModel = cellViewModels[indexPath.row]
+            let cellViewModel = filteredCellViewModels[indexPath.row]
             
             (cell as? BreedImageCollectionViewCell)?.configure(mode: .favourites(cellViewModel))
             

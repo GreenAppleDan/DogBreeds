@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FilterView" customModule="DogBreeds" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUZ-Ua-VIJ">
+                    <rect key="frame" x="20" y="10" width="175" height="46"/>
+                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="nWC-6b-Y5u"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Filter"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="filterButtonDidTap" destination="iN0-l3-epB" eventType="touchUpInside" id="qaQ-R4-toY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kze-4w-ChK">
+                    <rect key="frame" x="215" y="10" width="179" height="46"/>
+                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="QcU-vh-hVC"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Reset"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="resetButtonDidTap" destination="iN0-l3-epB" eventType="touchUpInside" id="4Nd-rc-o0m"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="bUZ-Ua-VIJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="6Kj-vi-hwi"/>
+                <constraint firstItem="kze-4w-ChK" firstAttribute="leading" secondItem="bUZ-Ua-VIJ" secondAttribute="trailing" constant="20" id="C53-87-Vya"/>
+                <constraint firstAttribute="bottom" secondItem="kze-4w-ChK" secondAttribute="bottom" id="HQk-q9-wgG"/>
+                <constraint firstItem="bUZ-Ua-VIJ" firstAttribute="width" secondItem="kze-4w-ChK" secondAttribute="width" multiplier="0.977654" id="REE-yx-9wx"/>
+                <constraint firstAttribute="trailingMargin" secondItem="kze-4w-ChK" secondAttribute="trailing" id="UaB-PF-yC1"/>
+                <constraint firstItem="kze-4w-ChK" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="dmc-F5-hXm"/>
+                <constraint firstAttribute="bottom" secondItem="bUZ-Ua-VIJ" secondAttribute="bottom" id="dv6-aT-UrM"/>
+                <constraint firstItem="bUZ-Ua-VIJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="i85-1E-BYB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="124.6376811594203" y="-197.28260869565219"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

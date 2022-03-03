@@ -12,6 +12,9 @@
 		CE8077B427D0BD8400AFA78B /* FavoriteBreedsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */; };
 		CE8077B927D0CAA400AFA78B /* FavoriteImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */; };
 		CE8077BB27D0CB0100AFA78B /* FavoriteImagesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */; };
+		CE8077BE27D0DFB000AFA78B /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8077BD27D0DFB000AFA78B /* FilterView.xib */; };
+		CE8077C027D0E0F600AFA78B /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077BF27D0E0F600AFA78B /* FilterView.swift */; };
+		CE8077C227D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077C127D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift */; };
 		CEDE5B9027CFDF7B0036B6C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */; };
 		CEDE5B9927CFDF7E0036B6C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */; };
 		CEDE5B9C27CFDF7E0036B6C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEDE5B9A27CFDF7E0036B6C2 /* LaunchScreen.storyboard */; };
@@ -51,6 +54,9 @@
 		CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBreedsStorage.swift; sourceTree = "<group>"; };
 		CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImagesListViewController.swift; sourceTree = "<group>"; };
 		CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteImagesListViewController.xib; sourceTree = "<group>"; };
+		CE8077BD27D0DFB000AFA78B /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
+		CE8077BF27D0E0F600AFA78B /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		CE8077C127D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImagesFilterViewController.swift; sourceTree = "<group>"; };
 		CEDE5B8C27CFDF7B0036B6C2 /* DogBreeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEDE5B8F27CFDF7B0036B6C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEDE5B9827CFDF7E0036B6C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,8 +151,18 @@
 			children = (
 				CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */,
 				CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */,
+				CE8077C127D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CE8077BC27D0DF9D00AFA78B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE8077BD27D0DFB000AFA78B /* FilterView.xib */,
+				CE8077BF27D0E0F600AFA78B /* FilterView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		CEDE5B8327CFDF7B0036B6C2 = {
@@ -195,6 +211,7 @@
 		CEDE5BA627CFDFD30036B6C2 /* FavoriteImages */ = {
 			isa = PBXGroup;
 			children = (
+				CE8077BC27D0DF9D00AFA78B /* View */,
 				CE8077B527D0CA1C00AFA78B /* ViewController */,
 				CEDE5BA727CFDFE40036B6C2 /* FavoriteImagesViewController.swift */,
 			);
@@ -398,6 +415,7 @@
 				CEDE5BDD27D00D100036B6C2 /* SpinnerViewController.xib in Resources */,
 				CEDE5BE827D01DCB0036B6C2 /* BreedImagesViewController.xib in Resources */,
 				CEDE5B9C27CFDF7E0036B6C2 /* LaunchScreen.storyboard in Resources */,
+				CE8077BE27D0DFB000AFA78B /* FilterView.xib in Resources */,
 				CEDE5BE427D0190F0036B6C2 /* BreedImageCollectionViewCell.xib in Resources */,
 				CE8077BB27D0CB0100AFA78B /* FavoriteImagesListViewController.xib in Resources */,
 				CEDE5B9927CFDF7E0036B6C2 /* Assets.xcassets in Resources */,
@@ -459,9 +477,11 @@
 				CEDE5BC127CFE9380036B6C2 /* BaseEndpoint.swift in Sources */,
 				CEDE5BCD27CFF0AB0036B6C2 /* ApiService.swift in Sources */,
 				CEDE5BB927CFE5710036B6C2 /* Endpoint.swift in Sources */,
+				CE8077C227D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift in Sources */,
 				CEDE5BBC27CFE8AF0036B6C2 /* Encoder.swift in Sources */,
 				CEDE5BA427CFDFA90036B6C2 /* AppViewController.swift in Sources */,
 				CEDE5BD027CFF55A0036B6C2 /* BreedNameView.swift in Sources */,
+				CE8077C027D0E0F600AFA78B /* FilterView.swift in Sources */,
 				CE8077B127D0BCBE00AFA78B /* DataStorage.swift in Sources */,
 				CE8077B927D0CAA400AFA78B /* FavoriteImagesListViewController.swift in Sources */,
 				CEDE5BC827CFEF330036B6C2 /* BreedsService.swift in Sources */,
