@@ -32,14 +32,23 @@
                             <constraint firstAttribute="width" constant="20" id="VD4-Qh-30c"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2w4-yh-zad">
+                        <rect key="frame" x="5" y="5" width="114" height="0.0"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" systemColor="systemRedColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="F9K-KF-IPS" secondAttribute="trailing" id="0H2-R9-e2D"/>
                     <constraint firstItem="F9K-KF-IPS" firstAttribute="top" secondItem="HXz-xi-AMO" secondAttribute="top" id="6CI-fc-c5c"/>
+                    <constraint firstAttribute="trailing" secondItem="2w4-yh-zad" secondAttribute="trailing" constant="5" id="Diq-qu-gMc"/>
                     <constraint firstAttribute="trailing" secondItem="Qaj-xN-n1n" secondAttribute="trailing" constant="10" id="EAU-z5-KYY"/>
+                    <constraint firstItem="2w4-yh-zad" firstAttribute="leading" secondItem="HXz-xi-AMO" secondAttribute="leading" constant="5" id="F6U-fp-nas"/>
                     <constraint firstItem="F9K-KF-IPS" firstAttribute="leading" secondItem="HXz-xi-AMO" secondAttribute="leading" id="Il4-lA-fke"/>
                     <constraint firstItem="oKv-tP-2HN" firstAttribute="centerX" secondItem="HXz-xi-AMO" secondAttribute="centerX" id="UFZ-L9-uaL"/>
+                    <constraint firstItem="2w4-yh-zad" firstAttribute="top" secondItem="HXz-xi-AMO" secondAttribute="top" constant="5" id="eZC-d0-yqc"/>
                     <constraint firstAttribute="bottom" secondItem="Qaj-xN-n1n" secondAttribute="bottom" constant="10" id="jNh-xC-ERQ"/>
                     <constraint firstAttribute="bottom" secondItem="F9K-KF-IPS" secondAttribute="bottom" id="sHO-OL-V1u"/>
                     <constraint firstItem="oKv-tP-2HN" firstAttribute="centerY" secondItem="HXz-xi-AMO" secondAttribute="centerY" id="vyu-pm-XJY"/>
@@ -48,6 +57,7 @@
             <size key="customSize" width="124" height="123"/>
             <connections>
                 <outlet property="activityIndicator" destination="oKv-tP-2HN" id="RZD-O5-uYa"/>
+                <outlet property="breedLabel" destination="2w4-yh-zad" id="vAY-qw-1iP"/>
                 <outlet property="heartImageView" destination="Qaj-xN-n1n" id="RyX-99-nyJ"/>
                 <outlet property="mainImageView" destination="F9K-KF-IPS" id="izb-Oc-9WE"/>
             </connections>

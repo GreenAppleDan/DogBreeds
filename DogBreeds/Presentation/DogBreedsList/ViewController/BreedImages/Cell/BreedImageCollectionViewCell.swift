@@ -10,6 +10,11 @@ import ImageLoader
 
 final class BreedImageCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet private var mainImageView: UIImageView!
+    @IBOutlet private var heartImageView: UIImageView!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var breedLabel: UILabel!
+    
     struct BasicViewModel {
         let imageUrl: URL
         let isInitiallySelected: Bool
@@ -26,11 +31,8 @@ final class BreedImageCollectionViewCell: UICollectionViewCell {
     }
     
     static let identifier = String(describing: BreedImageCollectionViewCell.self)
-    private var mode: Mode?
     
-    @IBOutlet private var mainImageView: UIImageView!
-    @IBOutlet private var heartImageView: UIImageView!
-    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    private var mode: Mode?
     
     private var isFavorite = false {
         didSet {
@@ -56,16 +58,20 @@ final class BreedImageCollectionViewCell: UICollectionViewCell {
         
         let imageUrl: URL
         
+        var breedName: String = ""
+        
         switch mode {
         case .basic(let viewModel):
             imageUrl = viewModel.imageUrl
         case .favourites(let viewModel):
             imageUrl = viewModel.imageUrl
+            breedName = viewModel.breed
         }
         
         mainImageView.load.request(with: imageUrl) { [weak self] _,_,_  in
             self?.activityIndicator.stopAnimating()
             self?.heartImageView.isHidden = false
+            self?.breedLabel.text = breedName
         }
         
         switch mode {
