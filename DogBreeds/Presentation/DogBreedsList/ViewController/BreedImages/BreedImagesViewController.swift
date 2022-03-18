@@ -7,16 +7,21 @@
 
 import UIKit
 
-final class BreedImagesViewController: UIViewController {
+enum BreedImagesViewControllerSection {
+    case main
+}
+
+final class BreedImagesViewController: UICollectionViewController {
     
-    @IBOutlet private var collectionView: UICollectionView!
-    @IBOutlet private var collectionViewHeightConstraint: NSLayoutConstraint!
+    private typealias DataSource = UICollectionViewDiffableDataSource<BreedImagesViewControllerSection, BreedImageCollectionViewCell.BasicViewModel>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<BreedImagesViewControllerSection, BreedImageCollectionViewCell.BasicViewModel>
     
-    private var collectionViewSize: CGSize = .zero
-    private var cellSize: CGSize = .zero
+    private lazy var dataSource = makeDataSource()
+    
     private let cellViewModels: [BreedImageCollectionViewCell.BasicViewModel]
+    private var collectionViewHeightConstraint: NSLayoutConstraint?
     
-    private let cellIdentifier = BreedImageCollectionViewCell.identifier
+    private static let cellIdentifier = BreedImageCollectionViewCell.identifier
     
     private let breed: String
     private var favoriteBreedsStorage: FavoriteBreedsStorage
@@ -41,7 +46,7 @@ final class BreedImagesViewController: UIViewController {
         self.favoriteBreedsStorage = favoriteBreedsStorage
         self.favoriteBreeds = favoriteBreeds
         
-        super.init(nibName: nil, bundle: nil)
+        super.init(collectionViewLayout: Self.collectionViewLayout())
     }
     
     required init?(coder: NSCoder) {
@@ -51,88 +56,79 @@ final class BreedImagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        applySnapshot()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        if collectionViewSize != collectionView.bounds.size {
-            collectionViewSize = collectionView.bounds.size
-            recalculateCellSize()
-            collectionView.collectionViewLayout.invalidateLayout()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if collectionViewHeightConstraint == nil {
+            let constraint = collectionView.heightAnchor.constraint(equalToConstant: collectionView.collectionViewLayout.collectionViewContentSize.height)
+            NSLayoutConstraint.activate([constraint ])
+            collectionViewHeightConstraint = constraint
+        } else {
+            collectionViewHeightConstraint?.constant = collectionView.collectionViewLayout.collectionViewContentSize.height
         }
     }
     
     private func setupCollectionView() {
         collectionView.delegate = self
-        collectionView.dataSource = self
         
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: cellIdentifier)
+        let nib = UINib(nibName: Self.cellIdentifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: Self.cellIdentifier)
     }
     
-    private func recalculateCellSize() {
+    private static func collectionViewLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0))
         
-        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-            cellSize = .zero
-            return
-        }
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let estimatedWidth: CGFloat = 138
-        let estimatedHeight: CGFloat = 124
-        let spacing = flowLayout.minimumInteritemSpacing
-        let allCasesCount = CGFloat(cellViewModels.count)
-        var numberOfCells = floor(collectionViewSize.width / estimatedWidth)
-        numberOfCells = min(numberOfCells, allCasesCount)
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 10,
+            leading: 10,
+            bottom: 10,
+            trailing: 10)
         
-        let spaceLeft = collectionViewSize.width - (numberOfCells - 1) * spacing
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalWidth(0.5))
         
-        guard numberOfCells > 0 else {
-            cellSize = .zero
-            return
-        }
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitem: item,
+            count: 2)
         
-        let cellWidth = spaceLeft / numberOfCells
-        let multiplier = cellWidth / estimatedWidth
-        
-        let cellHeight = estimatedHeight * multiplier
-        
-        cellSize = CGSize(width: cellWidth, height: cellHeight)
-        
-        let numberOfRows = ceil(allCasesCount / numberOfCells)
-        
-        guard numberOfRows > 0 else { return }
-        
-        let height = numberOfRows * cellHeight + (numberOfRows - 1) * spacing
-        if collectionViewHeightConstraint.constant != height {
-            collectionViewHeightConstraint.constant = height
-            view.setNeedsLayout()
-        }
-    }
-}
-
-extension BreedImagesViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellViewModels.count
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
     
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        
-        let cellViewModel = cellViewModels[indexPath.row]
-        
+    private func makeDataSource() -> DataSource {
+        let dataSource = DataSource(collectionView: collectionView) { (collectionView, indexPath, cellViewModel) in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Self.cellIdentifier, for: indexPath)
+            
             (cell as? BreedImageCollectionViewCell)?.configure(mode: .basic(cellViewModel))
+            
+            return cell
+        }
         
-        return cell
+        return dataSource
     }
     
+    private func applySnapshot(animatingDifferences: Bool = true) {
+        var snapshot = Snapshot()
+        
+        snapshot.appendSections([.main])
+        snapshot.appendItems(cellViewModels)
+        
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
 }
 
 extension BreedImagesViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cellViewModel = cellViewModels[indexPath.row]
         guard let cell = collectionView.cellForItem(at: indexPath) as? BreedImageCollectionViewCell else { return }
         guard let isFavorite = cell.toggleIsFavoriteIfPossible() else { return }
@@ -143,13 +139,5 @@ extension BreedImagesViewController: UICollectionViewDelegateFlowLayout {
         } else {
             favoriteBreeds.value.remove(favoriteBreed)
         }
-    }
-    
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return cellSize
     }
 }

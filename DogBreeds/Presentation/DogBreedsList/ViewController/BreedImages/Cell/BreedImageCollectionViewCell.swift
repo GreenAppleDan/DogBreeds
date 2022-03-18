@@ -15,9 +15,21 @@ final class BreedImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private var breedLabel: UILabel!
     
-    struct BasicViewModel {
+    struct BasicViewModel: Hashable {
+        let id: UUID
         let imageUrl: URL
         let isInitiallySelected: Bool
+        
+        init(imageUrl: URL,
+             isInitiallySelected: Bool) {
+            id = .init()
+            self.imageUrl = imageUrl
+            self.isInitiallySelected = isInitiallySelected
+        }
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            lhs.id == rhs.id
+        }
     }
     
     struct FavoritesViewModel {
@@ -69,9 +81,11 @@ final class BreedImageCollectionViewCell: UICollectionViewCell {
         }
         
         mainImageView.load.request(with: imageUrl) { [weak self] _,_,_  in
-            self?.activityIndicator.stopAnimating()
-            self?.heartImageView.isHidden = false
-            self?.breedLabel.text = breedName
+            DispatchQueue.main.async {
+                self?.activityIndicator.stopAnimating()
+                self?.heartImageView.isHidden = false
+                self?.breedLabel.text = breedName
+            }
         }
         
         switch mode {
