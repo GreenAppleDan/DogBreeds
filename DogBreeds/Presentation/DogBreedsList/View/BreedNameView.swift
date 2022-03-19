@@ -2,7 +2,7 @@
 //  BreedNameView.swift
 //  DogBreeds
 //
-//  Created by Denis Zhukoborskiy on 02.03.2022.
+//  Created by Denis on 20.03.2022.
 //
 
 import UIKit

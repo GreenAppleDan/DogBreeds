@@ -7,7 +7,18 @@
 
 import UIKit
 
-final class DogBreedsListViewController: ScrollStackViewController, Loadable {
+enum DogBreedsViewControllerSection {
+    case main
+}
+
+final class DogBreedsListViewController: UITableViewController {
+    
+    private typealias DataSource = UITableViewDiffableDataSource<DogBreedsViewControllerSection, String>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<DogBreedsViewControllerSection, String>
+    
+    private static let cellIdentifier = BreedNameViewCell.reuseIdentifier
+    private lazy var dataSource = makeDataSource()
+    private var breedNames = [String]()
     
     private let breedsService: BreedsService
     
@@ -36,38 +47,25 @@ final class DogBreedsListViewController: ScrollStackViewController, Loadable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTableView()
         getBreedsList()
         view.backgroundColor = .black
     }
     
     private func getBreedsList() {
-        startLoading()
         breedsService.breedsList { [weak self] result in
             switch result {
             case .success(let breedsList):
-                self?.stopLoading()
-                self?.setupWith(breeds: breedsList.breeds)
+                self?.applySnapshot(breedNames: breedsList.breeds)
             default:
                 break
             }
         }
     }
     
-    private func setupWith(breeds: [String]) {
-        let breedNameViews = breeds.map { breedName in
-            BreedNameView(breedName: breedName) { [weak self] in
-                self?.getBreedImages(breedName: breedName)
-            }
-        }
-        
-        breedNameViews.forEach{ addView($0) }
-    }
-    
     private func getBreedImages(breedName: String) {
-        startLoading()
         
         breedsService.breedImages(breed: breedName) { [weak self] result in
-            self?.stopLoading()
             
             switch result {
             case .success(let breedImages):
@@ -81,5 +79,41 @@ final class DogBreedsListViewController: ScrollStackViewController, Loadable {
     private func pushImagesVc(breed: String, breedImages: BreedImagesEndpointResponse) {
         let vc = BreedImagesContainerViewController(breed: breed, breedImages: breedImages)
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - TableView related code
+extension DogBreedsListViewController {
+    private func setupTableView() {
+        applySnapshot(breedNames: breedNames)
+        tableView.register(BreedNameViewCell.self, forCellReuseIdentifier: Self.cellIdentifier)
+    }
+    
+    private func makeDataSource() -> DataSource {
+        let dataSource = DataSource(tableView: tableView) { (tableView, indexPath, breed) in
+            let cell = tableView.dequeueReusableCell(withIdentifier: Self.cellIdentifier, for: indexPath)
+            (cell as? BreedNameViewCell)?.configure(breedName: breed)
+            return cell
+        }
+        
+        return dataSource
+    }
+    
+    func applySnapshot(breedNames: [String], animatingDifferences: Bool = true) {
+        self.breedNames = breedNames
+        var snapshot = Snapshot()
+        
+        snapshot.appendSections([.main])
+        snapshot.appendItems(breedNames)
+        
+        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension DogBreedsListViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        getBreedImages(breedName: breedNames[indexPath.row])
     }
 }

@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6AC53838D4B9E66E09E7BA09 /* Pods_DogBreeds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D665F4B4EBE1DB97678F633 /* Pods_DogBreeds.framework */; };
+		925727D427E68C33006A6ABE /* BreedNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925727D327E68C33006A6ABE /* BreedNameView.swift */; };
 		CE8077B127D0BCBE00AFA78B /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B027D0BCBE00AFA78B /* DataStorage.swift */; };
 		CE8077B427D0BD8400AFA78B /* FavoriteBreedsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */; };
 		CE8077B927D0CAA400AFA78B /* FavoriteImagesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */; };
-		CE8077BB27D0CB0100AFA78B /* FavoriteImagesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */; };
 		CE8077BE27D0DFB000AFA78B /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8077BD27D0DFB000AFA78B /* FilterView.xib */; };
 		CE8077C027D0E0F600AFA78B /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077BF27D0E0F600AFA78B /* FilterView.swift */; };
 		CE8077C227D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8077C127D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift */; };
@@ -34,7 +34,7 @@
 		CEDE5BC827CFEF330036B6C2 /* BreedsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BC727CFEF330036B6C2 /* BreedsService.swift */; };
 		CEDE5BCB27CFEFE50036B6C2 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BCA27CFEFE50036B6C2 /* Result.swift */; };
 		CEDE5BCD27CFF0AB0036B6C2 /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BCC27CFF0AB0036B6C2 /* ApiService.swift */; };
-		CEDE5BD027CFF55A0036B6C2 /* BreedNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BCF27CFF55A0036B6C2 /* BreedNameView.swift */; };
+		CEDE5BD027CFF55A0036B6C2 /* BreedNameViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BCF27CFF55A0036B6C2 /* BreedNameViewCell.swift */; };
 		CEDE5BD627D0088B0036B6C2 /* BreedImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BD527D0088B0036B6C2 /* BreedImagesViewController.swift */; };
 		CEDE5BD827D00B480036B6C2 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BD727D00B480036B6C2 /* NibLoadable.swift */; };
 		CEDE5BDB27D00C630036B6C2 /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDE5BDA27D00C630036B6C2 /* SpinnerViewController.swift */; };
@@ -49,10 +49,10 @@
 /* Begin PBXFileReference section */
 		2DB99C238E922953AAE7DA26 /* Pods-DogBreeds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DogBreeds.debug.xcconfig"; path = "Target Support Files/Pods-DogBreeds/Pods-DogBreeds.debug.xcconfig"; sourceTree = "<group>"; };
 		6D665F4B4EBE1DB97678F633 /* Pods_DogBreeds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DogBreeds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		925727D327E68C33006A6ABE /* BreedNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedNameView.swift; sourceTree = "<group>"; };
 		CE8077B027D0BCBE00AFA78B /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
 		CE8077B327D0BD8400AFA78B /* FavoriteBreedsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteBreedsStorage.swift; sourceTree = "<group>"; };
 		CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImagesListViewController.swift; sourceTree = "<group>"; };
-		CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteImagesListViewController.xib; sourceTree = "<group>"; };
 		CE8077BD27D0DFB000AFA78B /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
 		CE8077BF27D0E0F600AFA78B /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		CE8077C127D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteImagesFilterViewController.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		CEDE5BC727CFEF330036B6C2 /* BreedsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsService.swift; sourceTree = "<group>"; };
 		CEDE5BCA27CFEFE50036B6C2 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		CEDE5BCC27CFF0AB0036B6C2 /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
-		CEDE5BCF27CFF55A0036B6C2 /* BreedNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedNameView.swift; sourceTree = "<group>"; };
+		CEDE5BCF27CFF55A0036B6C2 /* BreedNameViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedNameViewCell.swift; sourceTree = "<group>"; };
 		CEDE5BD527D0088B0036B6C2 /* BreedImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedImagesViewController.swift; sourceTree = "<group>"; };
 		CEDE5BD727D00B480036B6C2 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		CEDE5BDA27D00C630036B6C2 /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				CE8077B827D0CAA400AFA78B /* FavoriteImagesListViewController.swift */,
-				CE8077BA27D0CB0100AFA78B /* FavoriteImagesListViewController.xib */,
 				CE8077C127D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift */,
 			);
 			path = ViewController;
@@ -308,7 +307,7 @@
 		CEDE5BCE27CFF5390036B6C2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CEDE5BCF27CFF55A0036B6C2 /* BreedNameView.swift */,
+				925727D327E68C33006A6ABE /* BreedNameView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -343,6 +342,7 @@
 		CEDE5BE227D018B80036B6C2 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CEDE5BCF27CFF55A0036B6C2 /* BreedNameViewCell.swift */,
 				CEDE5BE327D0190F0036B6C2 /* BreedImageCollectionViewCell.xib */,
 				CEDE5BE527D01A230036B6C2 /* BreedImageCollectionViewCell.swift */,
 			);
@@ -413,7 +413,6 @@
 				CEDE5B9C27CFDF7E0036B6C2 /* LaunchScreen.storyboard in Resources */,
 				CE8077BE27D0DFB000AFA78B /* FilterView.xib in Resources */,
 				CEDE5BE427D0190F0036B6C2 /* BreedImageCollectionViewCell.xib in Resources */,
-				CE8077BB27D0CB0100AFA78B /* FavoriteImagesListViewController.xib in Resources */,
 				CEDE5B9927CFDF7E0036B6C2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,7 +475,7 @@
 				CE8077C227D0E5A400AFA78B /* FavoriteImagesFilterViewController.swift in Sources */,
 				CEDE5BBC27CFE8AF0036B6C2 /* Encoder.swift in Sources */,
 				CEDE5BA427CFDFA90036B6C2 /* AppViewController.swift in Sources */,
-				CEDE5BD027CFF55A0036B6C2 /* BreedNameView.swift in Sources */,
+				CEDE5BD027CFF55A0036B6C2 /* BreedNameViewCell.swift in Sources */,
 				CE8077C027D0E0F600AFA78B /* FilterView.swift in Sources */,
 				CE8077B127D0BCBE00AFA78B /* DataStorage.swift in Sources */,
 				CE8077B927D0CAA400AFA78B /* FavoriteImagesListViewController.swift in Sources */,
@@ -489,6 +488,7 @@
 				CEDE5BAB27CFDFFD0036B6C2 /* DogBreedsListViewController.swift in Sources */,
 				CEDE5B9027CFDF7B0036B6C2 /* AppDelegate.swift in Sources */,
 				CEDE5BE127D010D00036B6C2 /* BreedImagesEndpoint.swift in Sources */,
+				925727D427E68C33006A6ABE /* BreedNameView.swift in Sources */,
 				CEDE5BC327CFE9940036B6C2 /* BreedsListEndpoint.swift in Sources */,
 				CE8077B427D0BD8400AFA78B /* FavoriteBreedsStorage.swift in Sources */,
 				CEDE5BAE27CFE0210036B6C2 /* ScrollStackViewController.swift in Sources */,

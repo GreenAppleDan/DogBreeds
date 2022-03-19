@@ -27,14 +27,34 @@ final class BreedImageCollectionViewCell: UICollectionViewCell {
             self.isInitiallySelected = isInitiallySelected
         }
         
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
+        
         static func == (lhs: Self, rhs: Self) -> Bool {
             lhs.id == rhs.id
         }
     }
     
-    struct FavoritesViewModel {
+    struct FavoritesViewModel: Hashable {
+        let id: UUID
         let imageUrl: URL
         let breed: String
+        
+        init(imageUrl: URL,
+             breed: String) {
+            id = .init()
+            self.imageUrl = imageUrl
+            self.breed = breed
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
+        
+        static func == (lhs: Self, rhs: Self) -> Bool {
+            lhs.id == rhs.id
+        }
     }
     
     enum Mode {
